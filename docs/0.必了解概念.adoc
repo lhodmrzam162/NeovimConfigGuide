@@ -10,16 +10,19 @@ IMPORTANT: Neovim本身是一个Vim的分支，但后来Neovim逐渐引入了不
 
 
 
-== 0.1.Neovim配置文件
+== 0.1.Runtimepath
 
-Neovim的配置文件一般存放在以下目录：
+Neovim的配置文件存在于runtimepath中。runtimepath就是Neovim加载配置文件的路径。runtimepath可以存在多个，你可以自由修改它。 +
+runtimepath的默认常见路径包括：
 
 * Linux/MacOS: `~/.config/nvim`
 * Windows: `~/AppData/Local/nvim`
 
 TIP: `~` 是当前用户的**家目录**。在Linux中一般是 `/home/用户名` ，在MacOS中一般是 `/Users/用户名` ，在Windows中一般是 `C:/Users/用户名` 。
 
-Neovim的配置文件格式比较自由。在配置文件下需要一个 `init.lua` 或 `init.vim` 作为配置入口。
+NOTE: Neovim插件的本质其实也只是配置文件。包管理器一般会帮你为插件自动添加runtimepath。
+
+Neovim的配置文件格式比较自由。在runtimepath中需要一个 `init.lua` 或 `init.vim` 作为配置入口。
 既然你都用Neovim了，那当然就要拥抱Neovim带来的Lua支持了，所以本文档[underline]##只包含使用Lua进行配置的详解##。
 
 NOTE: `.vim` 格式的配置文件是Vim的原生配置文件，Neovim也保留了它，但同时引入了完整的Lua支持，且比 `.vim` 更强大。 +
@@ -36,7 +39,7 @@ Neovim会在启动时运行 `init.lua` 。一般情况下，我们都只在 `ini
 
 文件树大概长这样：
 
- .config/nvim
+ runtimepath
  │
  ├─lua
  │ ├─plugins
@@ -90,4 +93,6 @@ Neovim会在启动时运行 `init.lua` 。一般情况下，我们都只在 `ini
 这是3个重要但较为抽象的概念。 +
 最简洁的说法是，**缓冲区是内存中已被加载的内容，窗口是实际显示缓冲区的区域，标签页是一个或多个窗口的集合。**
 
-[我是占位的]
+* **缓冲区**是内存中已经被加载的内容，通常是文件。通常来说，打开一个文件后，Neovim就会新建一个缓冲区将文件内容存放进去。
+* **窗口**是显示缓冲区的一块区域，一个标签页内可以创建多个窗口。窗口可以显示的缓冲区没有限制，你可以多个窗口显示同一个缓冲区。
+* **标签页**是多个窗口的集合，一个标签页内可以创建多个窗口。哪怕跨标签页，窗口可以显示的缓冲区也还是没有限制的。
