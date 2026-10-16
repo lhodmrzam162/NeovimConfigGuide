@@ -2,4 +2,25 @@
 
 Neovim本来是一个Vim的分支，虽然它现在发展得如此壮大，但它仍然保留着大量Vim特性，包括基础配置。本篇介绍的是常见的原生配置项，暂时不涉及到插件。
 
-TIP: 在开始之前，必须要先阅读前一篇(0.)的内容再继续。否则看不懂不关我的事。
+
+
+== 2.0.init.lua
+
+一切配置都源于 `init.lua` 。默认情况下，只有 `init.lua` 会被加载，但你可以使用 `require` 来引用其他lua脚本。
+
+rumtimepath的概念相信你已经知道了。接下来在你的runtimepath里新建一个 `init.lua` 配置入口。 +
+在 `init.lua` 中的 `require` 语句引用的脚本默认会在runtimepath下的 `lua` 文件夹下寻找lua脚本。
+
+
+
+== 2.1.外观设置
+
+[,lua]
+---
+vim.opt.number = true -- 显示绝对行号。
+vim.opt.relativenumber = true -- 显示相对行号。与上一个配置项同时使用时将仅在选中行显示绝对行号。
+vim.opt.cursorline = true -- 高亮光标所在行。建议无论如何都开启，这个的确非常好用。
+vim.opt.wrap = false -- 自动分行显示，即在单行文本太长无法全部显示时自动拆分为多行显示。看个人喜好。一般写代码时建议关闭。
+vim.opt.scrolloff = 6 -- 使光标距离窗口上下至少保持6行距离。具体数值看个人喜好。
+vim.opt.termguicolors = true -- 启用24位真彩色显示。大部分主题都需要开启，否则可能导致画面发灰等情况。
+---
