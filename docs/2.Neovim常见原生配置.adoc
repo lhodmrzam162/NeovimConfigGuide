@@ -14,11 +14,11 @@ rumtimepath的概念相信你已经知道了。接下来在你的runtimepath里�
 在正式开始前，还有一个配置项建议直接放在 `init.lua` 开头：
 
 [source,lua]
----
+----
 require("vim._core.ui2").enable({
   enable = true,
 })
----
+----
 
 这是Neovim0.12新增的VimCoreUI2，改进了非常多的细节。强烈建议开启。
 
@@ -27,7 +27,7 @@ require("vim._core.ui2").enable({
 == 2.1.外观设置
 
 [source,lua]
----
+----
 vim.opt.number = true             -- 显示绝对行号。
 vim.opt.relativenumber = true     -- 显示相对行号。与上一个配置项同时使用时将仅在选中行显示绝对行号。
 vim.opt.cursorline = true         -- 高亮光标所在行。建议无论如何都开启，这个的确非常好用。
@@ -38,35 +38,35 @@ vim.opt.scrolloff = 6             -- 使光标距离窗口上下至少保持6行
 vim.opt.termguicolors = true      -- 启用24位真彩色显示。大部分主题都需要开启，否则可能导致画面发灰等情况。
 vim.opt.signcolumn = "yes"        -- 常驻显示符号列，使用部分插件时需开启以免显示故障。
 vim.opt.showmode = true           -- 显示当前模式。这里暂时开启，但在安装了lualine插件后就会显得多余了。
----
+----
 
 
 
 == 2.2.编辑设置
 
 [source,lua]
----
+----
 vim.opt.expandtab = true          -- 使用空格字符代替tab字符。除非你想整点乱子，否则别关。
 vim.opt.tabstop = 4               -- 使用4个空格代替tab字符。
 vim.opt.shiftwidth = 4            -- 设置自动缩进的空格数。
 vim.opt.autoindent = true         -- 使新行自动继承上一行的缩进。
 vim.opt.smartindent = true        -- 根据语法自动判断的智能缩进。可与上一项同时启用。
 vim.opt.clipboard = "unnamedplus" -- 使用系统剪贴板而不是nvim单独的剪贴板。
----
+----
 
 
 
 == 2.3.杂项
 
 [source,lua]
----
+----
 vim.opt.mouse:append("a")         -- 启用鼠标。括号内的是启用鼠标的模式，设置为"a"以在所有模式下启用。
 vim.opt.mousemoveevent = true     -- Neovim特有配置项，设为true时将为鼠标移动注册事件。这一项默认关闭，因为这可能会产生大量事件消息。部分插件需要开启才能正常使用。
 vim.opt.splitright = true         -- 使窗口竖直分屏时把新窗口放在右侧。
 vim.opt.splitbelow = true         -- 使窗口竖直分屏时把新窗口放在下方。
 vim.opt.undolevels = 10000        -- 设置最大可撤销步数。一般保持默认(不手动添加)即可。
 vim.opt.confirm = true            -- 在文件未保存的情况下使用:q时弹窗确认而不是抛出error。
----
+----
 
 
 
